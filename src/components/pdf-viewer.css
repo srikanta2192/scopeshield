@@ -1,0 +1,5 @@
+/* Invisible text layer over the canvas so users can select and redact real PDF text. Mirrors pdf.js's own text-layer rules. */
+.ss-textLayer { position: absolute; inset: 0; overflow: clip; line-height: 1; text-size-adjust: none; forced-color-adjust: none; transform-origin: 0 0; z-index: 2; --scale-round-x: 1px; --scale-round-y: 1px; }
+.ss-textLayer :is(span, br) { color: transparent; position: absolute; white-space: pre; cursor: text; transform-origin: 0% 0%; }
+.ss-textLayer .markedContent { display: contents; }
+.ss-textLayer ::selection { background: rgb(26 26 26 / 0.3); }

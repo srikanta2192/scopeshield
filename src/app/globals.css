@@ -1,26 +1,106 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
+/* ─── ScopeShield Design Tokens ─────────────────────────────────────────── */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Fonts */
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-newsreader);
+
+  /* "Calm Authority" Palette */
+  --color-alabaster: #F8F7F4;   /* App background */
+  --color-ivory: #FFFCF8;       /* Document page background */
+  --color-ink: #1A1A1A;         /* Primary text */
+  --color-ink-light: #4A4A4A;   /* Secondary text */
+
+  /* Critical — terracotta wash */
+  --color-terracotta: #F5E6E1;
+  --color-terracotta-dark: #C87965;
+  --color-terracotta-border: #E8C7BD;
+
+  /* Warning — amber wash */
+  --color-amber: #FDF3E1;
+  --color-amber-dark: #D99830;
+  --color-amber-border: #F0D5A3;
+
+  /* Resolved — sage wash */
+  --color-sage: #E3EBE4;
+  --color-sage-dark: #5C8E66;
+  --color-sage-border: #B8D4BD;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* ─── Base Styles ────────────────────────────────────────────────────────── */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-alabaster);
+  color: var(--color-ink);
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+/* ─── Document Canvas ────────────────────────────────────────────────────── */
+/* Subtle paper-like shadow for document pages */
+.doc-shadow {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03), 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+/* ─── Redaction Pills ────────────────────────────────────────────────────── */
+.redacted-pill {
+  display: inline-block;
+  background-color: var(--color-ink);
+  color: #ffffff;
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: 0.85em;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  line-height: 1.6;
+}
+
+/* ─── Clause Highlights ──────────────────────────────────────────────────── */
+.highlight-critical {
+  background-color: var(--color-terracotta);
+  border-bottom: 2px solid var(--color-terracotta-border);
+  border-radius: 2px;
+}
+
+.highlight-warning {
+  background-color: var(--color-amber);
+  border-bottom: 2px solid var(--color-amber-border);
+  border-radius: 2px;
+}
+
+.highlight-resolved {
+  background-color: var(--color-sage);
+  border-bottom: 2px solid var(--color-sage-border);
+  border-radius: 2px;
+}
+
+/* ─── Deal Leverage Slider ───────────────────────────────────────────────── */
+.leverage-slider {
+  -webkit-appearance: none;
+  width: 100%;
+  background: transparent;
+}
+
+.leverage-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 2px solid var(--color-terracotta-dark);
+  cursor: pointer;
+  margin-top: -7px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.leverage-slider::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 6px;
+  cursor: pointer;
+  background: #E5E5E5;
+  border-radius: 3px;
+}
+
+.leverage-slider:focus {
+  outline: none;
 }
